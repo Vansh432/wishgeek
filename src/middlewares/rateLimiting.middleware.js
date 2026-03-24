@@ -13,7 +13,10 @@ export const globalLimiter = rateLimit({
 
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5, 
+  max: 5,
+  keyGenerator: (req) => {
+    return req.body.email || req.ip;
+  },
   message: {
     status: false,
     message: "Too many login attempts, try again later",

@@ -30,7 +30,7 @@ const userSchema=new mongoose.Schema({
 })
 
 //indexing---> it is not scanned all docs and add no duplication in DB level
-userSchema.index({email:1},{unique:true})
+userSchema.index({email:1})
 
 const User=mongoose.model('user',userSchema);
 export default User;
